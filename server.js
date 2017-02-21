@@ -7,6 +7,12 @@ var jwtCheck = jwt({
     audience: 'juSb0mUIFtFQIrs5nVslyGeucnvOJknC'
 });
 
+app.use(function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+  next();
+});
+
 app.use('/secure', jwtCheck);
 
 app.get('/', function (req, res) {
@@ -18,8 +24,7 @@ app.get('/secure', function (req, res){
 })
 
 var server = app.listen(8081, function () {
-    var host = server.address().address;
     var port = server.address().port;
 
-    console.log("Example app listening at http://%s:%s", host, port);
+    console.log("Example app listening at http://127.0.0.1:%s", port);
 });
