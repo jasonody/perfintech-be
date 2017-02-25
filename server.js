@@ -23,7 +23,8 @@ app.get('/secure', function (req, res){
     res.send('Secure endpoint');
 })
 
-var server = app.listen(8081, function () {
+var port = process.env.PORT || 1337;
+var server = app.listen(port, function () {
     var port = server.address().port;
 
     console.log("Example app listening at http://127.0.0.1:%s", port);
