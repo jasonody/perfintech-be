@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var jwt = require('express-jwt');
+var bodyParser = require('body-parser');
 
 var jwtCheck = jwt({
     secret: 'To4W3Vl6jvv4TE0_n9fdEp7kePVWWyrDST1eCJjCFsPccKNLEuwJQRAi5bIioHm8',
@@ -13,15 +14,21 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.use('/secure', jwtCheck);
+app.use(bodyParser.json());
 
-app.get('/', function (req, res) {
-    res.send('Open endpoint');
+app.use('/api', jwtCheck);
+
+app.all('/', function (req, res) {
+    res.send('PerFinTech Api');
 });
 
-app.get('/secure', function (req, res){
+app.get('/api/secure', function (req, res) {
     res.send('Secure endpoint');
-})
+});
+
+app.post('/api/transaction', function (req, res) {
+    res.send(req.body);
+});
 
 var port = process.env.PORT || 1337;
 var server = app.listen(port, function () {
