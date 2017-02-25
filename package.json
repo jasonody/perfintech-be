@@ -2,24 +2,16 @@
   "name": "perfintech-be",
   "version": "1.0.0",
   "description": "PerFinTech Backend",
-  "main": "index.js",
+  "main": "server.js",
+  "engines": {
+    "node": "6.9.5"
+  },
   "dependencies": {
     "body-parser": "^1.16.1",
     "express": "^4.14.1",
     "express-jwt": "^5.1.0"
   },
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jasonody/perfintech-be.git"
-  },
+  "devDependencies": {},    
   "author": "Ody Bros",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/jasonody/perfintech-be/issues"
-  },
-  "homepage": "https://github.com/jasonody/perfintech-be#readme"
+  "license": "ISC"  
 }
